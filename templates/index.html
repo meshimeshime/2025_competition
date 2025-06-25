@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DCT 워터마크 시스템</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-100 min-h-screen">
+
+  <header class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-6">
+    <div class="text-center">
+      <h1 class="text-4xl font-bold">
+        <i class="fas fa-shield-alt mr-2"></i>DCT 워터마크 시스템
+      </h1>
+      <p class="mt-2 text-lg opacity-90">디지털 이미지 보호를 위한 고급 워터마킹 솔루션</p>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-2 gap-10">
+
+    <!-- 워터마크 삽입 -->
+    <section class="bg-white rounded-lg shadow-lg p-6">
+      <h2 class="text-2xl font-bold text-indigo-700 mb-4">
+        <i class="fas fa-pen-nib mr-2"></i>워터마크 삽입
+      </h2>
+      <form action="/embed" method="POST" enctype="multipart/form-data" class="space-y-4">
+        <div>
+          <label class="block font-medium text-gray-700">이미지 업로드</label>
+          <input type="file" name="image" accept="image/png, image/jpeg" required class="mt-1 w-full border border-gray-300 rounded-md px-3 py-2" />
+        </div>
+        <div>
+          <label class="block font-medium text-gray-700">작가 이름 또는 ID</label>
+          <input type="text" name="creator" placeholder="예: 김재준" required class="mt-1 w-full border border-gray-300 rounded-md px-3 py-2" />
+        </div>
+        <div>
+          <label class="block font-medium text-gray-700">작품명</label>
+          <input type="text" name="title" placeholder="예: 숲의 노래" required class="mt-1 w-full border border-gray-300 rounded-md px-3 py-2" />
+        </div>
+        <div>
+          <label class="block font-medium text-gray-700">작품 창작일시</label>
+          <input type="datetime-local" name="created_at" required class="mt-1 w-full border border-gray-300 rounded-md px-3 py-2" />
+        </div>
+        <div>
+          <label class="block font-medium text-gray-700">참고한 작품명 (선택)</label>
+          <input type="text" name="ref_title" placeholder="예: 별의 기억" class="mt-1 w-full border border-gray-300 rounded-md px-3 py-2" />
+        </div>
+        <div>
+          <label class="block font-medium text-gray-700">참고한 작가명 (선택)</label>
+          <input type="text" name="ref_creator" placeholder="예: 이은지" class="mt-1 w-full border border-gray-300 rounded-md px-3 py-2" />
+        </div>
+        <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-md font-semibold">
+          삽입
+        </button>
+      </form>
+    </section>
+
+    <!-- 워터마크 검출 -->
+    <section class="bg-white rounded-lg shadow-lg p-6">
+      <h2 class="text-2xl font-bold text-green-700 mb-4">
+        <i class="fas fa-search mr-2"></i>워터마크 검출
+      </h2>
+      <form action="/detect" method="POST" enctype="multipart/form-data" class="space-y-4">
+        <div>
+          <label class="block font-medium text-gray-700">검출할 이미지 업로드</label>
+          <input type="file" name="image" accept="image/png, image/jpeg" required class="mt-1 w-full border border-gray-300 rounded-md px-3 py-2" />
+        </div>
+        <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-md font-semibold">
+          검출
+        </button>
+      </form>
+    </section>
+
+  </main>
+
+</body>
+</html>
